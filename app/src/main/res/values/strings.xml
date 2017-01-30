@@ -1,0 +1,64 @@
+<resources>
+
+    <string name="sub_menu_promociones">Promociones</string>
+    <string name="app_name">ARMARK</string>
+    <string name="hello_world">Clic en cada boton para probar las funciones</string>
+    <string name="button_usuario">Usuario</string>
+    <string name="button_almacenes">Almacenes</string>
+    <string name="button_categorias">Categorias</string>
+    <string name="button_promociones">Promociones</string>
+
+    <string name="facebook_app_id">257103774687256</string>
+
+    <string name="button_login">Cerrar sesion</string>
+
+    <string name="title_activity_login">Login</string>
+
+
+    <!--string traidos del otro programa-->
+
+    <string name="tag_login_correo">Correo</string>
+    <string name="tag_login_contrasena">Contraseña</string>
+
+
+    <!-- Strings relacionados al login -->
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Contraseña (opcional)</string>
+    <string name="text_btn_login">Iniciar sesion</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="error_invalid_email">Este es un correo invalido</string>
+    <string name="error_invalid_password">La contraseña es demasiado corta</string>
+    <string name="error_incorrect_password">La contraseña es incorrecta</string>
+    <string name="error_field_required">Este campo es requerido</string>
+    <string name="permission_rationale">Se necesitan permisos</string>
+
+    <string name="tag_login_recordar_contrasena">Recordar contraseña</string>
+    <string name="tag_login_registrarse">Registrarse</string>
+    <string name="imv_login_logo">Logo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--string de menu toolbar-->
+    <string name="accion_actualizar">Actualizar</string>
+    <string name="accion_cerrarsesion">Cerrar Sesion</string>
+    <string name="accion_configuracion">Configuración</string>
+
+
+    <!--string de item listas-->
+    <string name="descripcion">Descripcion</string>
+    <string name="detalles">Detalles</string>
+    <string name="promociones">Promociones</string>
+    <string name="categorias">Categorias</string>
+    <string name="almacen">Almacen</string>
+    <string name="porcentaje">%</string>
+
+
+    <!--string de descuentos-->
+    <string name="valor_antes">Antes: $</string>
+    <string name="valor_ahora">Ahora: $</string>
+    <string name="fecha_inicio">Fecha inicio: </string>
+    <string name="fecha_final">Hasta: </string>
+    <string name="descuento">descuento</string>
+    <string name="referencia">Referencia: </string>
+</resources>

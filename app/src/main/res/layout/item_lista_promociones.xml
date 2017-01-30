@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_button_promociones"
+        android:clickable="false"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="70dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/detalles"
+            android:textSize="12sp"
+            android:id="@+id/btndetallesPromociones"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/almacen"
+            android:textSize="12sp"
+            android:id="@+id/btnalmacenPromociones"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        card_view:cardCornerRadius="@dimen/cardview_default_radius"
+        card_view:cardElevation="@dimen/cardview_default_elevation"
+        card_view:cardUseCompatPadding="true"
+        android:id="@+id/cardview_Promociones">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:id="@+id/img_promociones"/>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/img_promociones"
+                android:layout_toEndOf="@+id/img_promociones"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:background="#000000"
+                android:id="@+id/viewLinePromocion"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/descripcion"
+                android:layout_toEndOf="@id/viewLinePromocion"
+                android:layout_toRightOf="@id/viewLinePromocion"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/tamaño_letra_20sp"
+                android:id="@+id/txt_nombre_promociones"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/descripcion"
+                android:id="@+id/txt_descripcion_promociones"
+                android:layout_below="@id/txt_nombre_promociones"
+                android:layout_alignLeft="@+id/txt_nombre_promociones"
+                android:layout_alignStart="@+id/txt_nombre_promociones"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:hint="@string/porcentaje"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/tamaño_letra_25sp"
+                android:id="@+id/txt_descuentoPromociones"/>
+
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -1,0 +1,53 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    tools:context="com.feedhenry.armark.fragmentos.Detalles_almacenes_fragment">
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/img_sub_almacen"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textAllCaps="true"
+        android:layout_centerHorizontal="true"
+        android:hint="razon social"
+        android:id="@+id/txt_razonsocial_almacen" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="direccion"
+        android:layout_alignBottom="@+id/img_sub_almacen"
+        android:layout_toRightOf="@+id/img_sub_almacen"
+        android:layout_toEndOf="@+id/img_sub_almacen"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/txt_direccion_almacen" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="telefono"
+        android:layout_alignTop="@+id/txt_direccion_almacen"
+        android:layout_toRightOf="@+id/txt_direccion_almacen"
+        android:layout_toEndOf="@+id/txt_direccion_almacen"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/txt_telefono_almacen"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="correo electronico"
+        android:id="@+id/txt_correo_almacen"
+        android:layout_above="@+id/txt_direccion_almacen"
+        android:layout_alignStart="@id/txt_direccion_almacen"
+        android:layout_alignLeft="@id/txt_direccion_almacen"
+        android:layout_marginBottom="10dp" />
+
+</RelativeLayout>
