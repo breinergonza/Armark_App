@@ -13,7 +13,7 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@mipmap/ic_logotipo"
+        android:icon="@mipmap/ic_logo_basico"
         android:label="@string/app_name"
         android:theme="@style/MyTheme.Base"
         tools:replace="android:icon">
@@ -21,14 +21,18 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
+        <activity android:name=".SplashActivity"
+            android:theme="@style/SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Loggin" />
 
@@ -44,7 +48,8 @@
         <activity android:name=".Sub_menus.Sub_menu_almacenes" />
         <activity android:name=".Sub_menus.Sub_menu_categorias" />
         <activity android:name=".RegistrarUsuario" />
-        <activity android:name=".RecordarPassword"></activity>
+        <activity android:name=".RecordarPassword" />
+
     </application>
 
 </manifest>

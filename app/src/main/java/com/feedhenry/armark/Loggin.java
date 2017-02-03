@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -20,6 +21,10 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.feedhenry.sdk.FH;
+import com.feedhenry.sdk.FHActCallback;
+import com.feedhenry.sdk.FHResponse;
+import com.feedhenry.sdk.api.FHCloudRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,7 +39,12 @@ public class Loggin extends AppCompatActivity {
     private EditText TxtUsuario;
     private EditText TxtPassword;
 
+    private View mProgressView;
+    private View mLoginFormView;
+
     private SharedPreferences preferences;
+
+    private static final String TAG = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +62,7 @@ public class Loggin extends AppCompatActivity {
                 String Password = TxtPassword.getText().toString();
 
                 if(Validacion(Usuario,Password)){
-                    GuardarPrefences(Usuario,Password);
-                    goClasePrincipal();
+                    cloudCallUsuario(v, Usuario,Password);
                 }
             }
         });
@@ -61,11 +70,75 @@ public class Loggin extends AppCompatActivity {
         login_con_facebook();
     }
 
+    public void cloudCallUsuario(final View v, final String Usuario, final String Password) {
+        try {
+
+            mProgressView.setVisibility(View.VISIBLE);
+            mLoginFormView.setVisibility(View.GONE);
+
+            org.json.fh.JSONObject params = new org.json.fh.JSONObject("{correo: '"+ Usuario +"', password: '"+ Password +"' }");
+
+            FHCloudRequest request = FH.buildCloudRequest("login", "POST", null, params);
+            request.executeAsync(new FHActCallback() {
+                @Override
+                public void success(FHResponse fhResponse) {
+                    Log.d(TAG, "cloudCall - success");
+                    v.setEnabled(true);
+
+                    try {
+                        JSONObject obj = new JSONObject(fhResponse.getJson().toString());
+
+                        org.json.JSONObject jsonRespuesta = obj.getJSONObject("Respuesta");
+
+                        String Estado =jsonRespuesta.getString("Estado");
+
+                        if(Estado.equals("OK")){
+                            GuardarPrefences(Usuario,Password);
+                            goClasePrincipal();
+                        }else{
+                            Toast.makeText(v.getContext(), "Correo o contraseña incorrectos!", Toast.LENGTH_LONG).show();
+                            Limpiar();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(v.getContext(), "No se pudo iniciar sesión, error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Limpiar();
+                    }
+
+                }
+
+                @Override
+                public void fail(FHResponse fhResponse) {
+                    Log.d(TAG, "cloudCall - fail");
+                    Log.e(TAG, fhResponse.getErrorMessage(), fhResponse.getError());
+                    v.setEnabled(true);
+                    Toast.makeText(v.getContext(), "No se pudo iniciar sesión, error: " + fhResponse.getErrorMessage(), Toast.LENGTH_LONG).show();
+                    Limpiar();
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(v.getContext(), "No se pudo iniciar sesión, error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Log.e(TAG, e.getMessage(), e.getCause());
+            Limpiar();
+        }
+    }
+
     private void InicializarComponentes() {
         loginButtonFacebook = (LoginButton)findViewById(R.id.btn_login_facebook);
         BtnIniciarSesion = (Button) findViewById(R.id.BtnLogin);
         TxtUsuario = (EditText) findViewById(R.id.TxtUsuario);
         TxtPassword = (EditText) findViewById(R.id.TxtPassword);
+        mLoginFormView = findViewById(R.id.login_form);
+        mProgressView = findViewById(R.id.login_progress);
+    }
+
+    private void Limpiar(){
+        TxtUsuario.setText("");
+        TxtPassword.setText("");
+        TxtUsuario.requestFocus();
+        mProgressView.setVisibility(View.GONE);
+        mLoginFormView.setVisibility(View.VISIBLE);
     }
 
     private boolean Validacion(String Usuario, String Password) {
@@ -107,16 +180,20 @@ public class Loggin extends AppCompatActivity {
         loginButtonFacebook.setReadPermissions(Arrays.asList("email"));
 
         loginButtonFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+
+
             @Override
             public void onSuccess(LoginResult loginResult) {
 
+
+                mProgressView.setVisibility(View.VISIBLE);
+                mLoginFormView.setVisibility(View.GONE);
 
                 GraphRequest request = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 Log.v("response",response.toString());
-
 
                                 try {
                                     String email = object.getString("email");

@@ -75,7 +75,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
         // REGISTRO INICIALES
 
-        ContentValues values = new ContentValues();
+        /* ContentValues values = new ContentValues();
         values.put(Contrato.Armark_almacen.IDWEB,"1");
         values.put(Contrato.Armark_almacen.RAZONSOCIAL,"El vivito");
         values.put(Contrato.Armark_almacen.NIT,"18425417-1");
@@ -114,6 +114,8 @@ public class BaseDatos extends SQLiteOpenHelper {
         values.put(Contrato.Armark_almacen.Y,"--");
         db.insertOrThrow(Tabla.ALMACEN,null,values);
 
+        */
+
     }
 
     private void CrearTablaPromociones(SQLiteDatabase db) {
@@ -140,7 +142,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
         // REGISTRO INICIALES
 
-        ContentValues values = new ContentValues();
+       /* ContentValues values = new ContentValues();
         values.put(Contrato.Armark_promociones.IDWEB,"15");
         values.put(Contrato.Armark_promociones.REFERENCIA,"El vivito");
         values.put(Contrato.Armark_promociones.NOMBRE,"CAMISAS");
@@ -158,7 +160,7 @@ public class BaseDatos extends SQLiteOpenHelper {
         values.put(Contrato.Armark_promociones.TAGS,"--");
         values.put(Contrato.Armark_promociones.X,"--");
         values.put(Contrato.Armark_promociones.Y,"--");
-        db.insertOrThrow(Tabla.PROMOCIONES,null,values);
+        db.insertOrThrow(Tabla.PROMOCIONES,null,values);*/
     }
 
     private void CrearTablaCategorias(SQLiteDatabase db) {
@@ -177,7 +179,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
         // REGISTRO INICIALES
 
-        ContentValues values = new ContentValues();
+       /* ContentValues values = new ContentValues();
         values.put(Contrato.Armark_categorias.IDWEB,"1");
         values.put(Contrato.Armark_categorias.NOMBRE,"El vivito");
         values.put(Contrato.Armark_categorias.IDCATEGORIAS,"null");
@@ -187,6 +189,6 @@ public class BaseDatos extends SQLiteOpenHelper {
         values.put(Contrato.Armark_categorias.VISIBLE,"null");
         values.put(Contrato.Armark_categorias.ACTIVO,"false");
 
-        db.insertOrThrow(Tabla.CATEGORIAS,null,values);
+        db.insertOrThrow(Tabla.CATEGORIAS,null,values);*/
     }
 }

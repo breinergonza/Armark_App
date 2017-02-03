@@ -16,8 +16,8 @@
     <!-- Login progress -->
     <ImageView
         android:id="@+id/imv_login_logo"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="30dp"
         android:contentDescription="@string/imv_login_logo"
@@ -59,10 +59,10 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="162dp"
                     android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
+                    android:inputType="textEmailAddress"
                     android:ems="10"
                     android:maxLines="1"
-                    android:hint="Usuario"/>
+                    android:hint="Correo"/>
 
             </android.support.design.widget.TextInputLayout>
 

@@ -28,8 +28,6 @@ import modelo.Contrato;
 public class Almacen_fragment extends Fragment implements Adaptador_Almacen.OnItemClickListener,
         LoaderManager.LoaderCallbacks<Cursor>{
 
-
-
     public static final String ALMACEN = "ARG_PAGE";
     public static final String IDALMACEN = "ARG_PAGE";//  recibimos eL ID DEL ALMACEN , SI LO HAY
     public static final String VARCONTROL = "ARG_PAGE";//  recibimos la variable control, sabemos que intenet nos llama
@@ -127,8 +125,6 @@ public class Almacen_fragment extends Fragment implements Adaptador_Almacen.OnIt
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-
-
 
         return new CursorLoader(getContext(), Contrato.Armark_almacen.URI_CONTENIDO,null,null,null,null);
 

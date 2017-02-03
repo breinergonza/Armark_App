@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
             Inicio_feedHenry_sdk iniciar = new Inicio_feedHenry_sdk();
             iniciar.InicializarFH(getApplicationContext());
 
-
-
     }
 
     @Override
@@ -92,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.accion_actualizar) {
             Inicio_feedHenry_sdk iniciar = new Inicio_feedHenry_sdk();
@@ -107,15 +104,12 @@ public class MainActivity extends AppCompatActivity {
                 LoginManager.getInstance().logOut();
 
                 preferences.edit().clear().apply();
-
                 goLogin();
 
             }
 
             return true;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
