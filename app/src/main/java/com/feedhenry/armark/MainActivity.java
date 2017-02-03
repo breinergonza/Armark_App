@@ -1,18 +1,4 @@
-/**
- * Copyright 2015 Red Hat, Inc., and individual contributors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 package com.feedhenry.armark;
 
 import android.content.Context;
@@ -88,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-       if(AccessToken.getCurrentAccessToken()== null) {
+       if(AccessToken.getCurrentAccessToken()== null && !SesionIniciada()) {
             goLogin();
             Log.e("error","no debo entrar aqui");
         }
@@ -117,8 +103,11 @@ public class MainActivity extends AppCompatActivity {
         if ( id == R.id.accion_cerrarsesion){
 
             // cerramos cesion con cuenta de facebook
-            if (AccessToken.getCurrentAccessToken() != null) { //  si esto es null quiere decir que no tenemos la seccion iniciada
+            if (AccessToken.getCurrentAccessToken() != null || SesionIniciada()) { //  si esto es null quiere decir que no tenemos la seccion iniciada
                 LoginManager.getInstance().logOut();
+
+                preferences.edit().clear().apply();
+
                 goLogin();
 
             }
@@ -216,7 +205,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void SesionIniciada(){
+    private boolean SesionIniciada(){
+        boolean res = false;
+
+        String usuario = preferences.getString("usuario","");
+        String password = preferences.getString("password","");
+
+        if(usuario.length() > 0 && password.length() > 0)
+        {
+            res = true;
+        }
+
+        return res;
 
     }
 
