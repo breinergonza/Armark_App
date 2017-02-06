@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -130,7 +129,7 @@ public class Loggin extends AppCompatActivity {
         TxtUsuario = (EditText) findViewById(R.id.TxtUsuario);
         TxtPassword = (EditText) findViewById(R.id.TxtPassword);
         mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        mProgressView = findViewById(R.id.progressBar);
     }
 
     private void Limpiar(){

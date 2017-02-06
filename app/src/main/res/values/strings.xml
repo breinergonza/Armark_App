@@ -33,6 +33,10 @@
     <string name="permission_rationale">Se necesitan permisos</string>
 
     <string name="tag_login_recordar_contrasena">Recordar contraseña</string>
+    <string name="titulo_recordar_contrasena">Olvidaste tu contraseña?</string>
+    <string name="desc_contrasena">Solo necesitamos tu correo electrónico registrado para enviarte las instrucciones de restablecimiento de contraseña.</string>
+    <string name="res_contrasena">Restablecer contraseña</string>
+    <string name="titulo_regresar">Regresar</string>
     <string name="tag_login_registrarse">Registrarse</string>
     <string name="imv_login_logo">Logo</string>
 
@@ -61,4 +65,13 @@
     <string name="fecha_final">Hasta: </string>
     <string name="descuento">descuento</string>
     <string name="referencia">Referencia: </string>
+
+    <!--string de registro de usuarios-->
+    <string name="txtNombres">Nombres</string>
+    <string name="txtApellidos">Apellidos</string>
+    <string name="txtTelefono">Celular</string>
+    <string name="txtEmail">Email</string>
+    <string name="txtPassword">Contraseña</string>
+    <string name="BtnRegistrar">Registrar Usuario</string>
+
 </resources>
