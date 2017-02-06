@@ -39,7 +39,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/txtNombres"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:textColor="@android:color/white"
                     android:textColorHint="@android:color/white" />
             </android.support.design.widget.TextInputLayout>
@@ -55,9 +55,9 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/txtApellidos"
-                    android:inputType="textEmailAddress"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white" />
+                    android:textColorHint="@android:color/white"
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -71,7 +71,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/txtTelefono"
-                    android:inputType="textEmailAddress"
+                    android:inputType="phone"
                     android:textColor="@android:color/white"
                     android:textColorHint="@android:color/white" />
             </android.support.design.widget.TextInputLayout>
