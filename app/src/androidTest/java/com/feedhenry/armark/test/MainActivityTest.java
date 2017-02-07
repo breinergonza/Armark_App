@@ -25,17 +25,14 @@ import android.view.ContextThemeWrapper;
 import com.feedhenry.armark.HelloFragment;
 import com.feedhenry.armark.MainActivity;
 //import com.feedhenry.helloworld_android.R;
-import com.squareup.okhttp.mockwebserver.MockWebServer;
 
-import org.junit.Assert;
+
 
 import java.io.IOException;
 
 public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
 
 
-
-    private MockWebServer mockWebServer = null;
     private long startTime;
     public MainActivityTest() {
         super(MainActivity.class);
@@ -43,8 +40,7 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
 
     public void setUp() throws Exception {
         super.setUp();
-        mockWebServer = new MockWebServer();
-        mockWebServer.start(9000);
+
        // ContextThemeWrapper context = new AlternateAssetsContextWrapper(getInstrumentation().getTargetContext(), R.style.MyTheme_Base, getInstrumentation().getContext());
         //setActivityContext(context);
         startTime = System.currentTimeMillis();

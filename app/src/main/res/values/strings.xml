@@ -56,6 +56,7 @@
     <string name="categorias">Categorias</string>
     <string name="almacen">Almacen</string>
     <string name="porcentaje">%</string>
+    <string name="titulo_ir">Ir</string>
 
 
     <!--string de descuentos-->
@@ -73,5 +74,6 @@
     <string name="txtEmail">Email</string>
     <string name="txtPassword">Contraseña</string>
     <string name="BtnRegistrar">Registrar Usuario</string>
+    <string name="title_activity_ir_almacen">Map</string>
 
 </resources>

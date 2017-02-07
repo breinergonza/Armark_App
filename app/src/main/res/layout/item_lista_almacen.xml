@@ -20,24 +20,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/detalles"
+            android:text=""
             android:textSize="12sp"
+            android:background="@mipmap/ic_detalles"
             android:id="@+id/btndetalles"
             />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/promociones"
+            android:text=""
+            android:background="@mipmap/ic_promociones"
             android:textSize="10sp"
             android:id="@+id/btnpromociones"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/categorias"
+            android:text=""
             android:textSize="10sp"
+            android:background="@mipmap/ic_categorias"
             android:id="@+id/btncategorias"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text=""
+            android:textSize="10sp"
+            android:background="@mipmap/ic_ir"
+            android:id="@+id/btnIrAlmacen"/>
     </LinearLayout>
 
 

@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/detalles"
+            android:text=""
+            android:background="@mipmap/ic_detalles"
             android:textSize="12sp"
             android:id="@+id/btnalmacencategorias"
             />
@@ -30,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/promociones"
+            android:text=""
+            android:background="@mipmap/ic_promociones"
             android:textSize="10sp"
             android:id="@+id/btnpromocionescategorias"/>
 
