@@ -129,7 +129,7 @@ public class Loggin extends AppCompatActivity {
         TxtUsuario = (EditText) findViewById(R.id.TxtUsuario);
         TxtPassword = (EditText) findViewById(R.id.TxtPassword);
         mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.progressBar);
+        mProgressView = findViewById(R.id.login_progress);
     }
 
     private void Limpiar(){

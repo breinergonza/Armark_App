@@ -23,6 +23,7 @@ import org.json.JSONObject;
 public class RegistrarUsuario extends AppCompatActivity {
 
     private Button BtnRegistrar;
+    private Button BtnVolver;
 
     private TextView TxtNombre;
     private TextView TxtApellidos;
@@ -65,6 +66,13 @@ public class RegistrarUsuario extends AppCompatActivity {
 
             }
         });
+
+        BtnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goLogin();
+            }
+        });
     }
 
     private void Inicializar(){
@@ -73,6 +81,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         TxtCelular = (TextView) findViewById(R.id.TxtTelefono);
         TxtEmail = (TextView) findViewById(R.id.TxtEmail);
         TxtPassword = (TextView) findViewById(R.id.TxtPassword);
+        BtnVolver = (Button) findViewById(R.id.btn_back);
 
         mLoginFormView = findViewById(R.id.registrar_form);
         mProgressView = findViewById(R.id.progressBar);
@@ -142,8 +151,9 @@ public class RegistrarUsuario extends AppCompatActivity {
                         if(Estado.equals("OK")){
                             GuardarPrefences(Usuario,Password);
                             goClasePrincipal();
-                        }else{
-                            Toast.makeText(v.getContext(), "Correo o contraseña incorrectos!", Toast.LENGTH_LONG).show();
+                        }else if(Estado.equals("ERROR")){
+                            String Mensaje = jsonRespuesta.getString("Mensaje");
+                            Toast.makeText(v.getContext(), "Alerta, " + Mensaje, Toast.LENGTH_LONG).show();
                             Limpiar();
                         }
 
@@ -177,8 +187,11 @@ public class RegistrarUsuario extends AppCompatActivity {
         TxtNombre.setText("");
         TxtApellidos.setText("");
         TxtEmail.setText("");
-        TxtUsuario.setText("");
+        TxtCelular.setText("");
         TxtPassword.setText("");
+
+        mProgressView.setVisibility(View.GONE);
+        mLoginFormView.setVisibility(View.VISIBLE);
     }
 
     private void goLogin() {
