@@ -76,4 +76,9 @@
     <string name="BtnRegistrar">Registrar Usuario</string>
     <string name="title_activity_ir_almacen">Map</string>
 
+    <!-- String de AR -->
+    <string name="finder_searching">Buscar</string>
+    <string name="recognition_only_tap">Reconocimiento</string>
+    <string name="recognition_only_toast_nothing_found">No se encontraron resultados!</string>
+
 </resources>

@@ -16,6 +16,17 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="70dp"
         android:layout_marginEnd="70dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:textSize="12sp"
+            android:background="@mipmap/ic_logo_basico"
+            android:id="@+id/BtnAR"
+            />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +54,7 @@
             android:id="@+id/btncategorias"/>
         <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=""
             android:textSize="10sp"

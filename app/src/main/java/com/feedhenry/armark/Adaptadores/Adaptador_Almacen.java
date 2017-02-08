@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.feedhenry.armark.ArAlmacenActivity;
 import com.feedhenry.armark.IrAlmacenActivity;
 import com.feedhenry.armark.R;
 import com.feedhenry.armark.Sub_menus.Sub_menu_almacenes;
@@ -88,7 +89,7 @@ public class Adaptador_Almacen extends RecyclerView.Adapter<Adaptador_Almacen.Vi
         private ImageView viewLogo;
         public LinearLayout linearLayout_button_almacen;
         public Boolean flag_control = false;
-        public Button btnDetalles,btnPromociones,btnCategorias, btnIrAlmacen;
+        public Button btnDetalles,btnPromociones,btnCategorias, btnIrAlmacen, BtnAR;
         public CardView cardView_almacenes;
 
         public ViewHolder(final View itemView) {
@@ -101,6 +102,7 @@ public class Adaptador_Almacen extends RecyclerView.Adapter<Adaptador_Almacen.Vi
             btnPromociones = (Button)itemView.findViewById(R.id.btnpromociones);
             btnCategorias = (Button)itemView.findViewById(R.id.btncategorias);
             btnIrAlmacen = (Button)itemView.findViewById(R.id.btnIrAlmacen);
+            BtnAR = (Button)itemView.findViewById(R.id.BtnAR);
             cardView_almacenes = (CardView)itemView.findViewById(R.id.cardview_Almacenes);
             linearLayout_button_almacen = (LinearLayout)itemView.findViewById(R.id.layout_button_almacenes);
             itemView.setOnClickListener(this);
@@ -142,6 +144,14 @@ public class Adaptador_Almacen extends RecyclerView.Adapter<Adaptador_Almacen.Vi
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(itemView.getContext(), IrAlmacenActivity.class);
+                    contexto.startActivity(intent);
+                }
+            });
+
+            BtnAR.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), ArAlmacenActivity.class);
                     contexto.startActivity(intent);
                 }
             });
