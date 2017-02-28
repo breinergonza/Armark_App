@@ -1,122 +1,61 @@
 package com.feedhenry.armark;
 
-import android.content.Intent;
-import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
-import com.craftar.CraftARActivity;
-import com.craftar.CraftARCloudRecognition;
-import com.craftar.CraftARError;
-import com.craftar.CraftARItem;
-import com.craftar.CraftARResult;
-import com.craftar.CraftARSDK;
-import com.craftar.CraftARSearchResponseHandler;
-import com.craftar.CraftARTracking;
-import com.craftar.ImageRecognition;
+import com.wikitude.architect.ArchitectStartupConfiguration;
+import com.wikitude.architect.ArchitectView;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
-public class ArAlmacenActivity extends CraftARActivity  implements
-        CraftARSearchResponseHandler, ImageRecognition.SetCollectionListener, View.OnClickListener {
+public class ArAlmacenActivity extends AppCompatActivity {
 
-    private final String TAG = "RecognitionOnlyActivity";
-
-    private View mScanningLayout;
-    private View mTapToScanLayout;
-
-    CraftARTracking mTracking;
-    CraftARSDK mCraftARSDK;
-    CraftARCloudRecognition mCloudIR;
+    private ArchitectView av;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_ar_almacen);
+        setContentView(R.layout.activity_ar_almacen);
+
+        av = (ArchitectView) this.findViewById(R.id.architectView);
+
+        final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration();
+        config.setLicenseKey(Constantes.WIKITUDE_SDK_KEY);
+
+        av.onCreate( config );
     }
 
     @Override
-    public void onPostCreate() {
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
 
-        View mainLayout= getLayoutInflater().inflate(R.layout.activity_ar_almacen, null);
-        setContentView(mainLayout);
+        av.onPostCreate();
 
-        mScanningLayout = findViewById(R.id.layout_scanning);
-        mTapToScanLayout = findViewById(R.id.tap_to_scan);
-        mTapToScanLayout.setOnClickListener(this);
-
-        mTracking = CraftARTracking.Instance();
-
-        mCraftARSDK = CraftARSDK.Instance();
-        mCraftARSDK.startCapture(this);
-
-    }
-
-    @Override
-    public void onPreviewStarted(int frameWidth, int frameHeight) {
-        mCloudIR = CraftARCloudRecognition.Instance();
-        mCloudIR.setCraftARSearchResponseHandler(this);
-        mCloudIR.setCollection("a6c5beeffb524446", this);
-        mCraftARSDK.setSearchController(mCloudIR.getSearchController());
-    }
-
-    @Override
-    public void collectionReady() {
-        mTapToScanLayout.setClickable(true);
-    }
-
-    @Override
-    public void setCollectionFailed(CraftARError craftARError) {
-        Log.d(TAG, "search failed! " + craftARError.getErrorMessage());
-    }
-
-    @Override
-    public void searchResults(ArrayList<CraftARResult> results, long searchTime, int requestCode) {
-        mCraftARSDK.getCamera().restartCapture();
-        mScanningLayout.setVisibility(View.GONE);
-        mTapToScanLayout.setVisibility(View.VISIBLE);
-
-        if(results.size()==0){
-            Log.d(TAG,"Nothing found");
-            Toast.makeText(getBaseContext(),getString(R.string.recognition_only_toast_nothing_found), Toast.LENGTH_SHORT).show();
-        }else{
-            CraftARResult result = results.get(0);
-            CraftARItem item = result.getItem();
-            if (!item.isAR()) {
-                String url = item.getUrl();
-                if((url!= null)&&(! url.isEmpty())){
-                    Intent launchBrowser = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(launchBrowser);
-                }
-            }
-            Log.d(TAG,"Found item "+item.getItemName());
+        try {
+            this.av.load( "file:///android_asset/Imagen/index.html" );
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
-    public void searchFailed(CraftARError craftARError, int i) {
-        Log.d(TAG,"search failed!");
-        Toast.makeText(getBaseContext(), getString(R.string.recognition_only_toast_nothing_found), Toast.LENGTH_SHORT).show();
-        mScanningLayout.setVisibility(View.GONE);
-        mTapToScanLayout.setVisibility(View.VISIBLE);
-        mCraftARSDK.getCamera().restartCapture();
+    protected void onResume() {
+        super.onResume();
+
+        av.onResume();
     }
 
     @Override
-    public void onClick(View view) {
-        if (view == mTapToScanLayout) {
-            mTapToScanLayout.setVisibility(View.GONE);
-            mScanningLayout.setVisibility(View.VISIBLE);
-            mCraftARSDK.singleShotSearch();
-        }
+    protected void onDestroy() {
+        super.onDestroy();
+
+        av.onDestroy();
     }
 
     @Override
-    public void onCameraOpenFailed(){
-        Toast.makeText(getApplicationContext(), "Camera error", Toast.LENGTH_SHORT).show();
+    protected void onPause() {
+        super.onPause();
+
+        av.onPause();
     }
-
-
 }
