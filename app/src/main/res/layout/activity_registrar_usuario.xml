@@ -8,6 +8,29 @@
     android:background="@color/colorPrimary"
     android:fitsSystemWindows="true">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:orientation="vertical">
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -19,23 +42,25 @@
     <ScrollView
         android:id="@+id/registrar_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        >
 
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_registro_container"
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:src="@mipmap/ic_logotipo" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:src="@mipmap/ic_logotipo" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -64,9 +89,9 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/txtApellidos"
+                    android:inputType="text"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white"
-                    android:inputType="text" />
+                    android:textColorHint="@android:color/white" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -117,29 +142,31 @@
                     android:textColorHint="@android:color/white" />
             </android.support.design.widget.TextInputLayout>
 
-        <!-- Login Button -->
+            <!-- Login Button -->
 
-        <Button
-            android:id="@+id/BtnRegistrar"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/colorAccent"
-            android:text="@string/BtnRegistrar"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@null"
-            android:text="@string/titulo_regresar"
-            android:textColor="@color/colorAccent" />
-
-    </LinearLayout>
+            <Button
+                android:id="@+id/BtnRegistrar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:background="@color/colorAccentLigth"
+                android:text="@string/BtnRegistrar"
+                android:textColor="@android:color/white" />
+            <!--
+                        <Button
+                            android:id="@+id/btn_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@null"
+                            android:text="@string/titulo_regresar"
+                            android:textColor="@color/colorAccent" />
+            -->
+        </LinearLayout>
 
     </ScrollView>
+</LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>
 
