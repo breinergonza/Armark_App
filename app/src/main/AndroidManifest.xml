@@ -87,7 +87,10 @@
             android:label="@string/sub_menu_promociones" />
         <activity android:name=".Sub_menus.Sub_menu_almacenes" />
         <activity android:name=".Sub_menus.Sub_menu_categorias" />
-        <activity android:name=".RegistrarUsuario" />
+        <activity android:name=".RegistrarUsuario" android:parentActivityName=".MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
         <activity android:name=".RecordarPassword" />
 
 

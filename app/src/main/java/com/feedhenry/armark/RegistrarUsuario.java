@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -44,6 +45,11 @@ public class RegistrarUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_usuario);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getResources().getString(R.string.BtnRegistrar));
+
         preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
         BtnRegistrar = (Button) findViewById(R.id.BtnRegistrar);
@@ -60,22 +66,22 @@ public class RegistrarUsuario extends AppCompatActivity {
                 String Email = TxtEmail.getText().toString();
                 String Password = TxtPassword.getText().toString();
 
-                if(Validacion(Nombre, Apellidos, Celular, Email, Password)){
+                if (Validacion(Nombre, Apellidos, Celular, Email, Password)) {
                     Registrar(v, Nombre, Apellidos, Celular, Email, Password);
                 }
 
             }
         });
-
+/*
         BtnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goLogin();
             }
-        });
+        });*/
     }
 
-    private void Inicializar(){
+    private void Inicializar() {
         TxtNombre = (TextView) findViewById(R.id.TxtNombres);
         TxtApellidos = (TextView) findViewById(R.id.TxtApellidos);
         TxtCelular = (TextView) findViewById(R.id.TxtTelefono);
@@ -87,7 +93,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         mProgressView = findViewById(R.id.progressBar);
     }
 
-    private boolean Validacion( String Nombre,  String Apellidos, String Celular, String Email, String Password) {
+    private boolean Validacion(String Nombre, String Apellidos, String Celular, String Email, String Password) {
 
         if (!isValidString(Nombre)) {
             Toast.makeText(this, "Digite su nombre", Toast.LENGTH_LONG).show();
@@ -101,29 +107,27 @@ public class RegistrarUsuario extends AppCompatActivity {
         } else if (!isValidEmail(Email)) {
             Toast.makeText(this, "Digite un Email valido!", Toast.LENGTH_LONG).show();
             return false;
-        }
-        else if (!isValidPassword(Password)) {
+        } else if (!isValidPassword(Password)) {
             Toast.makeText(this, "La contraseña debe tener minimo 6 caracteres!", Toast.LENGTH_LONG).show();
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
 
-    private boolean isValidString(String valor){
+    private boolean isValidString(String valor) {
         return !TextUtils.isEmpty(valor);
     }
 
-    private boolean isValidEmail(String Email){
+    private boolean isValidEmail(String Email) {
         return !TextUtils.isEmpty(Email) && android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches();
     }
 
-    private boolean isValidPassword(String Password){
+    private boolean isValidPassword(String Password) {
         return !TextUtils.isEmpty(Password) && Password.length() > 5;
     }
 
-    private void Registrar(final View v,  String Nombre, String Apellidos, String Celular, String Email, final String Password){
+    private void Registrar(final View v, String Nombre, String Apellidos, String Celular, String Email, final String Password) {
         try {
 
             mProgressView.setVisibility(View.VISIBLE);
@@ -132,7 +136,7 @@ public class RegistrarUsuario extends AppCompatActivity {
             String[] arrayUser = Email.split("@");
             final String Usuario = arrayUser[0];
 
-            String Data = "{ Nombre: '"+ Nombre +"', Apellido: '"+ Apellidos +"', Telefono: '"+ Celular +"', Email: '"+ Email+"', Usuario: '"+ Usuario +"',  Contrasena: '"+ Password +"', IdFb: '1', IdRol: '1' }";
+            String Data = "{ Nombre: '" + Nombre + "', Apellido: '" + Apellidos + "', Telefono: '" + Celular + "', Email: '" + Email + "', Usuario: '" + Usuario + "',  Contrasena: '" + Password + "', IdFb: '1', IdRol: '1' }";
 
             org.json.fh.JSONObject params = new org.json.fh.JSONObject(Data);
 
@@ -147,11 +151,11 @@ public class RegistrarUsuario extends AppCompatActivity {
                     try {
                         JSONObject obj = new JSONObject(fhResponse.getJson().toString());
                         org.json.JSONObject jsonRespuesta = obj.getJSONObject("Respuesta");
-                        String Estado =jsonRespuesta.getString("Estado");
-                        if(Estado.equals("OK")){
-                            GuardarPrefences(Usuario,Password);
+                        String Estado = jsonRespuesta.getString("Estado");
+                        if (Estado.equals("OK")) {
+                            GuardarPrefences(Usuario, Password);
                             goClasePrincipal();
-                        }else if(Estado.equals("ERROR")){
+                        } else if (Estado.equals("ERROR")) {
                             String Mensaje = jsonRespuesta.getString("Mensaje");
                             Toast.makeText(v.getContext(), "Alerta, " + Mensaje, Toast.LENGTH_LONG).show();
                             Limpiar();
@@ -183,7 +187,7 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     }
 
-    private void Limpiar(){
+    private void Limpiar() {
         TxtNombre.setText("");
         TxtApellidos.setText("");
         TxtEmail.setText("");
@@ -195,11 +199,11 @@ public class RegistrarUsuario extends AppCompatActivity {
     }
 
     private void goLogin() {
-        Intent intent = new Intent(this,Loggin.class);
+        Intent intent = new Intent(this, Loggin.class);
         startActivity(intent);
     }
 
-    private void GuardarPrefences(String Usuario, String Password){
+    private void GuardarPrefences(String Usuario, String Password) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("usuario", Usuario);
         editor.putString("password", Password);
@@ -209,7 +213,7 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     private void goClasePrincipal() {
 
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
 
         // AÑADIMOS banderas que nos permite limpiar el recorrido anterior, cuando presionemos atras no nos devuelve al login.
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |

@@ -13,7 +13,7 @@
     <string name="button_login">Cerrar sesion</string>
 
     <string name="title_activity_login">Login</string>
-
+    <string name="str_txt_registrarse"><u>Registrar usuario</u></string>
 
     <!--string traidos del otro programa-->
 
@@ -37,7 +37,7 @@
     <string name="desc_contrasena">Solo necesitamos tu correo electrónico registrado para enviarte las instrucciones de restablecimiento de contraseña.</string>
     <string name="res_contrasena">Restablecer contraseña</string>
     <string name="titulo_regresar">Regresar</string>
-    <string name="tag_login_registrarse">Registrarse</string>
+    <string name="tag_login_registrarse"><u>Registrarse</u></string>
     <string name="imv_login_logo">Logo</string>
 
     <!-- TODO: Remove or change this placeholder text -->

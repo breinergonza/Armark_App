@@ -13,7 +13,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.feedhenry.armark.Loggin">
 
-    <!-- Login progress -->
+    <!-- Login progress android:src="@drawable/img_login"-->
     <ImageView
         android:id="@+id/imv_login_logo"
         android:layout_width="150dp"
@@ -21,7 +21,8 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="30dp"
         android:contentDescription="@string/imv_login_logo"
-        android:src="@drawable/img_login" />
+        android:src="@drawable/img_login"
+         />
 
     <ProgressBar
         android:id="@+id/login_progress"
@@ -136,6 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
+                    android:textColor="@color/colorAccent"
                     android:gravity="center_horizontal"
                     android:text="@string/tag_login_registrarse"
                     android:typeface="normal"
